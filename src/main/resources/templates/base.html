@@ -7,21 +7,21 @@
     <title th:layoutTitle="${title}">Minha Biblioteca</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
-    <!-- Navbar -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="#">Minha Biblioteca</a>
+                <a class="navbar-brand fs-4" href="/livros/listarLivros">BIBLIOTECA</a>
                 <div class="collapse navbar-collapse justify-content-end">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="/livros/listarLivros">Consultar Livros</a>
+                            <a class="nav-link fs-5" href="/livros/listarLivros">Consultar Livros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/livros/cadastrarLivro">Cadastrar Livro</a>
+                            <a class="nav-link fs-5" href="/livros/cadastrarLivro">Cadastrar Livro</a>
                         </li>
                     </ul>
                 </div>
@@ -29,12 +29,9 @@
         </nav>
     </header>
 
-    <!-- Conteúdo Principal -->
     <main class="container mt-4" layout:fragment="content">
-        <!-- Conteúdo será inserido aqui -->
     </main>
 
-    <!-- Footer -->
     <footer class="text-center mt-4">
         <p>&copy; 2025 Minha Biblioteca</p>
     </footer>

@@ -18,7 +18,7 @@
                          style="max-height: 250px; width: 400px; object-fit: contain; padding: 5px;">
                     
                     <div class="card-body">
-                        <h5 class="card-title" th:text="${livro.titulo}"></h5>
+                        <h4 class="card-title" th:text="${livro.titulo}"></h4>
                         <p class="card-text"><strong>Autor:</strong> <span th:text="${livro.autor}"></span></p>
                         <p class="card-text"><strong>Categoria:</strong> <span th:text="${livro.categoria}"></span></p>
                         <p class="card-text"><strong>Status:</strong> <span th:text="${livro.status}"></span></p>
@@ -26,11 +26,11 @@
                     <div class="card-footer d-flex justify-content-between">
                         <form method="post" th:action="@{/livros/deletar}">
                             <input type="hidden" name="id" th:value="${livro.id}">
-                            <button class="btn btn-danger btn-sm">
+                            <button class="btn btn-danger">
                                 <i class="bi bi-trash"></i> Excluir
                             </button>
                         </form>
-                        <a th:href="@{/livros/editarLivro/{id}(id=${livro.id})}" class="btn btn-primary btn-sm">
+                        <a th:href="@{/livros/editarLivro/{id}(id=${livro.id})}" class="btn btn-primary">
                             <i class="bi bi-pencil"></i> Editar
                         </a>
                     </div>

@@ -1,0 +1,31 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.navbar-custom {
+    padding: 20px 15px;
+    font-size: 2rem; 
+}
+
+.navbar-brand {
+    font-size: 1.5rem; 
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.5rem !important;
+    font-weight: bold
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff !important;
+}
+
+#searchInput {
+    font-size: 1.35rem;
+    font-weight: 400;
+}
+
+p.card-text {
+    font-size: 1.1rem;
+}
