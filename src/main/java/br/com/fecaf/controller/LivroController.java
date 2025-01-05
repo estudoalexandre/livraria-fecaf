@@ -1,4 +1,6 @@
 package br.com.fecaf.controller;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,17 +21,14 @@ public class LivroController {
     private LivroService livroService;
     @Autowired
     private LivroRepository livroRepository;
-    
-    // @GetMapping("/listarLivros")
-    // @ResponseBody
-    // public List<Livro> listarLivros() {
-        //     return livroService.listarLivros();
-        // }
         
     @CrossOrigin(origins = "http://localhost:5500", allowedHeaders = "*")
     @GetMapping("/listarLivros")
     public String listarLivros(Model model) {
-        model.addAttribute("livros", livroService.listarLivros());
+        List<Livro> livrosOrdenados = livroService.listarLivros().stream().sorted(Comparator.comparing(Livro::getTitulo)).toList();
+
+
+        model.addAttribute("livros", livrosOrdenados);
         return "livros_cadastrados";
     }
 
