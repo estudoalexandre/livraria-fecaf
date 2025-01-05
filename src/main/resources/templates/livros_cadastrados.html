@@ -1,49 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{base.html}">
-<main layout:fragment="content">
-    <h1 class="text-center mb-4">Lista de Livros</h1>
-    <table id="tabelaLivros" class="table table-striped table-bordered">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Titulo</th>
-            <th>Autor</th>
-            <th>ISBN</th>
-            <th>Ano Publicado</th>
-            <th>Editora</th>
-            <th>Categoria</th>
-            <th>Quantidade</th>
-            <th>Status</th>
-            <th>Ações</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="livro : ${livros}">
-            <td th:text="${livro.id}"></td>
-            <td th:text="${livro.titulo}"></td>
-            <td th:text="${livro.autor}"></td>
-            <td th:text="${livro.isbn}"></td>
-            <td th:text="${livro.anoPublicacao}"></td>
-            <td th:text="${livro.editora}"></td>
-            <td th:text="${livro.categoria}"></td>
-            <td th:text="${livro.quantidade}"></td>
-            <td th:text="${livro.status}"></td>
-            <td>
-                <div class="d-flex gap-2">
-                    <form method="post" action="/livros/deletar">
-                        <input type="hidden" name="id" th:value="${livro.id}">
-                        <button class="btn btn-danger btn-sm">
-                            <i class="bi bi-trash"></i> Excluir
-                        </button>
-                    </form>
-                    <a th:href="'/livros/editarLivro/' + ${livro.id}" class="btn btn-primary btn-sm">
-                        <i class="bi bi-pencil"></i> Editar
-                    </a>
+    <main layout:fragment="content">
+        <h1 class="text-center mb-4">Lista de Livros</h1>
+
+        <!-- Campo de busca -->
+        <div class="mb-3">
+            <input id="searchInput" type="text" class="form-control" placeholder="Buscar livros...">
+        </div>
+
+        <!-- Container de cards -->
+        <div id="cardContainer" class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col data-card" th:each="livro : ${livros}">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${livro.titulo}"></h5>
+                        <p class="card-text"><strong>Autor:</strong> <span th:text="${livro.autor}"></span></p>
+                        <p class="card-text"><strong>Categoria:</strong> <span th:text="${livro.categoria}"></span></p>
+                        <p class="card-text"><strong>Status:</strong> <span th:text="${livro.status}"></span></p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <form method="post" th:action="@{/livros/deletar}">
+                            <input type="hidden" name="id" th:value="${livro.id}">
+                            <button class="btn btn-danger btn-sm">
+                                <i class="bi bi-trash"></i> Excluir
+                            </button>
+                        </form>
+                        <a th:href="@{/livros/editarLivro/{id}(id=${livro.id})}" class="btn btn-primary btn-sm">
+                            <i class="bi bi-pencil"></i> Editar
+                        </a>
+                    </div>
                 </div>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</main>
+            </div>
+        </div>
+
+        <!-- Controles de paginação -->
+        <div id="pagination" class="mt-4 d-flex justify-content-center"></div>
+    </main>
 </html>
