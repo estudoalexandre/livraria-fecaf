@@ -12,7 +12,11 @@
         <!-- Container de cards -->
         <div id="cardContainer" class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col data-card" th:each="livro : ${livros}">
-                <div class="card h-100 shadow-sm">
+                <div class="card h-100 shadow-sm text-center">
+                    <!-- Imagem do livro -->
+                    <img th:src="${livro.imagem}" class="card-img-top mx-auto" alt="Imagem do livro"
+                         style="max-height: 200px; object-fit: contain; padding: 15px;">
+                    
                     <div class="card-body">
                         <h5 class="card-title" th:text="${livro.titulo}"></h5>
                         <p class="card-text"><strong>Autor:</strong> <span th:text="${livro.autor}"></span></p>

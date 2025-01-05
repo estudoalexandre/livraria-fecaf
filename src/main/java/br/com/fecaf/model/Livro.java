@@ -21,6 +21,7 @@ public class Livro {
     private int quantidade;
     private LocalDate dataCadastro;
     private String status;
+    private String imagem;
 
     @PrePersist
     protected void onCreate() {
@@ -106,5 +107,13 @@ public class Livro {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 }
