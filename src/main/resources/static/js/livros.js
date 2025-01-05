@@ -4,12 +4,23 @@ $(document).ready(function () {
     let currentPage = 1;
     let filteredCards = cards;
 
+    const noBooksMessage = $("<div class='alert alert-warning text-center'>Nenhum livro encontrado</div>");
+    noBooksMessage.css("margin-top", "10px");
+    noBooksMessage.hide();
+    $("#searchInput").after(noBooksMessage);
+
     function updatePagination() {
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
 
         cards.hide();
         filteredCards.slice(startIndex, endIndex).show();
+
+        if (filteredCards.length === 0) {
+            noBooksMessage.show();
+        } else {
+            noBooksMessage.hide();
+        }
     }
 
     function setupPaginationControls() {
