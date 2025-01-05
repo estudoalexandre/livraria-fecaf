@@ -22,6 +22,12 @@ public class Livro {
     private LocalDate dataCadastro;
     private String status;
 
+    @PrePersist
+    protected void onCreate() {
+        this.dataCadastro = LocalDate.now();
+    }
+
+
     public Long getId() {
         return id;
     }
