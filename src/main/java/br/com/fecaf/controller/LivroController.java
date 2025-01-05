@@ -38,12 +38,10 @@ public class LivroController {
     @RequestMapping(value = "/cadastrarLivro", method = {RequestMethod.GET, RequestMethod.POST})
     public String cadastrarLivro(@ModelAttribute Livro livro, Model model, HttpServletRequest request) {
         if (request.getMethod().equalsIgnoreCase("GET")) {
-            // Requisição GET: retorna o formulário vazio para criação
-            model.addAttribute("livro", new Livro()); // Cria um objeto vazio para o formulário
-            return "cadastrar_livro"; // Nome do template Thymeleaf
+            model.addAttribute("livro", new Livro()); 
+            return "cadastrar_livro";
         }
 
-        // Requisição POST: salva o livro
         livroService.cadastrarLivro(livro);
         return "redirect:/livros/listarLivros";
     }
