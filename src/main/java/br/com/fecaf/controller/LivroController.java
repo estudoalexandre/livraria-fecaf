@@ -1,6 +1,5 @@
 package br.com.fecaf.controller;
-
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,6 +49,40 @@ public class LivroController {
     public String deletarLivro(@RequestParam("id") Long id){
         livroService.excluirLivro(id);
         System.out.println("Livro deletado com sucesso" + id);
+        return "redirect:/livros/listarLivros";
+    }
+
+    @GetMapping("/editarLivro/{id}")
+    public String editarLivro(@PathVariable("id") Long id, Model model) {
+        Optional<Livro> livroOptional = livroRepository.findById(id);
+        if(livroOptional.isPresent()){
+            Livro livro = livroOptional.get();
+            model.addAttribute("livro", livro);
+            return "editar_livro";
+        } else {
+            return "redirect:/livros/listarLivros";
+        }
+    }
+
+    @PostMapping("/editarLivro/{id}")
+    public String editarLivro(@PathVariable("id") Long id, @ModelAttribute Livro livro) {
+        Optional<Livro> livroExistente = livroRepository.findById(id);
+        if (livroExistente.isPresent()) {
+            Livro livroAtualizado = livroExistente.get();
+
+            // Atualize apenas os campos permitidos
+            livroAtualizado.setTitulo(livro.getTitulo());
+            livroAtualizado.setAutor(livro.getAutor());
+            livroAtualizado.setIsbn(livro.getIsbn());
+            livroAtualizado.setAnoPublicacao(livro.getAnoPublicacao());
+            livroAtualizado.setEditora(livro.getEditora());
+            livroAtualizado.setCategoria(livro.getCategoria());
+            livroAtualizado.setQuantidade(livro.getQuantidade());
+            livroAtualizado.setStatus(livro.getStatus());
+
+            // Não atualize dataCadastro
+            livroRepository.save(livroAtualizado);
+        }
         return "redirect:/livros/listarLivros";
     }
 
