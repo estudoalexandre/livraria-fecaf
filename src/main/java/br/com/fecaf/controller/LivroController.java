@@ -68,8 +68,6 @@ public class LivroController {
         Optional<Livro> livroExistente = livroRepository.findById(id);
         if (livroExistente.isPresent()) {
             Livro livroAtualizado = livroExistente.get();
-
-            // Atualize apenas os campos permitidos
             livroAtualizado.setTitulo(livro.getTitulo());
             livroAtualizado.setAutor(livro.getAutor());
             livroAtualizado.setIsbn(livro.getIsbn());
@@ -79,7 +77,6 @@ public class LivroController {
             livroAtualizado.setQuantidade(livro.getQuantidade());
             livroAtualizado.setStatus(livro.getStatus());
 
-            // Não atualize dataCadastro
             livroRepository.save(livroAtualizado);
         }
         return "redirect:/livros/listarLivros";

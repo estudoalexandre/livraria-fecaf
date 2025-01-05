@@ -4,16 +4,13 @@
     <main layout:fragment="content">
         <h1 class="text-center mb-4">Lista de Livros</h1>
 
-        <!-- Campo de busca -->
         <div class="mb-3">
             <input id="searchInput" type="text" class="form-control" placeholder="Buscar livros...">
         </div>
 
-        <!-- Container de cards -->
         <div id="cardContainer" class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col data-card" th:each="livro : ${livros}">
                 <div class="card h-100 shadow-sm text-center">
-                    <!-- Imagem do livro -->
                     <img th:src="${livro.imagem}" class="card-img-top" alt="Imagem do livro"
                          style="max-height: 250px; width: 400px; object-fit: contain; padding: 5px;">
                     
@@ -38,7 +35,6 @@
             </div>
         </div>
 
-        <!-- Controles de paginação -->
         <div id="pagination" class="mt-4 d-flex justify-content-center"></div>
     </main>
 </html>
