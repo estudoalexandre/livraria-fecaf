@@ -21,5 +21,9 @@ public class LivroService {
     public void cadastrarLivro(Livro livro) {
         livroRepository.save(livro);
     }
+
+    public void excluirLivro(Long id) {
+        livroRepository.deleteById(id);
+    }
     
 }

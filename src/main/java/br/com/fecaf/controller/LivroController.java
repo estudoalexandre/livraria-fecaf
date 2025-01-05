@@ -46,5 +46,12 @@ public class LivroController {
         return "redirect:/livros/listarLivros";
     }
 
+    @PostMapping("/deletar")
+    public String deletarLivro(@RequestParam("id") Long id){
+        livroService.excluirLivro(id);
+        System.out.println("Livro deletado com sucesso" + id);
+        return "redirect:/livros/listarLivros";
+    }
+
     
 }

@@ -31,7 +31,7 @@
             <td th:text="${livro.status}"></td>
             <td>
                 <div class="d-flex gap-2">
-                    <form method="post" action="">
+                    <form method="post" action="/livros/deletar">
                         <input type="hidden" name="id" th:value="${livro.id}">
                         <button class="btn btn-danger btn-sm">
                             <i class="bi bi-trash"></i> Excluir
