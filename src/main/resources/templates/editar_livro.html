@@ -40,6 +40,10 @@
             </select>
         </div>
         <div class="mb-3">
+            <label for="imagem" class="form-label">Insira a URL da Imagem: </label>
+            <input type="text" class="form-control" id="imagem" name="imagem" required placeholder="Ex: https://www.example.com/image.jpg">
+        </div>
+        <div class="mb-3">
             <label for="dataCadastro" class="form-label">Data de Cadastro</label>
             <span th:text="${livro?.dataCadastro}"></span>
         </div>

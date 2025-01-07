@@ -76,6 +76,7 @@ public class LivroController {
             livroAtualizado.setCategoria(livro.getCategoria());
             livroAtualizado.setQuantidade(livro.getQuantidade());
             livroAtualizado.setStatus(livro.getStatus());
+            livroAtualizado.setImagem(livro.getImagem());
 
             livroRepository.save(livroAtualizado);
         }
